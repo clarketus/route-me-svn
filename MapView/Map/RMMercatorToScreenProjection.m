@@ -136,7 +136,7 @@
 	CGFloat left = sqrt((pointX - (originX - boundsWidth))*(pointX - (originX - boundsWidth)));
 	CGFloat middle = sqrt((pointX - originX)*(pointX - originX));
 	CGFloat right = sqrt((pointX - (originX + boundsWidth))*(pointX - (originX + boundsWidth)));
-	
+
 	//RMLog(@"left:%f middle:%f right:%f x:%f width:%f", left, middle, right, pointX, boundsWidth);//LK
 	
 	if(middle <= left && middle <= right){
@@ -147,6 +147,9 @@
 	} else{ //right
 		aPixelPoint.x = (aPoint.easting - (originX+boundsWidth)) / aScale;
 	}
+	
+	// using just this one means the points stay in the same place!
+//	aPixelPoint.x = (aPoint.easting - (originX/*-boundsWidth*/)) / aScale;
 	
 	aPixelPoint.y = screenBounds.size.height - (aPoint.northing - origin.northing) / aScale;
 	return aPixelPoint;

@@ -145,6 +145,7 @@ NS_INLINE RMLatLong RMPixelPointAsLatLong(RMProjectedPoint xypoint) {
 }
 
 static RMProjection* _google = nil;
+static RMProjection* _non_wrapping_google = nil;
 static RMProjection* _latlong = nil;
 static RMProjection* _osgb = nil;
 
@@ -163,6 +164,24 @@ static RMProjection* _osgb = nil;
 				   +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs"
 											  InBounds: theBounds];
 		return _google;
+	}
+}
+
++ (RMProjection*)nonWrappingGoogleProjection
+{
+	if (_non_wrapping_google)
+	{
+		return _non_wrapping_google;
+	}
+	else
+	{
+		/// \bug magic numbers embedded in code, this one's probably ok
+		RMProjectedRect theBounds = RMMakeProjectedRect(-20037508.34, -20037508.34, 20037508.34 * 2, 20037508.34 * 2);
+		
+		_non_wrapping_google = [[RMProjection alloc] initWithString:@"+title= Wrapping Google Mercator EPSG:900913\
+				   +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs"
+											  InBounds: theBounds];
+		return _non_wrapping_google;
 	}
 }
 
