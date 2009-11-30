@@ -180,7 +180,7 @@
 // extended to full tile loading area
 -(CGRect) addTiles: (RMTileRect)rect ToDisplayIn:(CGRect)bounds
 {
-//	RMLog(@"addTiles: %d %d - %f %f", rect.origin.tile.x, rect.origin.tile.y, rect.size.width, rect.size.height);
+	//	RMLog(@"addTiles: %d %d - %f %f", rect.origin.tile.x, rect.origin.tile.y, rect.size.width, rect.size.height);
 	
 	RMTile t;
 	t.zoom = rect.origin.tile.zoom;
@@ -198,8 +198,15 @@
 	int tileRegionHeight = (int)roundedRect.size.height;
 	
 	id<RMMercatorToTileProjection> proj = [tileSource mercatorToTileProjection];
+	
+	int start = roundedRect.origin.tile.x + tileRegionWidth - 1;
+	int end = roundedRect.origin.tile.x - 1;
+	
+	//NSLog(@"ORIGIN: %i TO: %i", start + 1, end + 1);
+	
+	for (t.x = start; (int)t.x > end; t.x--) // reversing this order stops the pointless moving of the tiles
 		
-	for (t.x = roundedRect.origin.tile.x; t.x < roundedRect.origin.tile.x + tileRegionWidth; t.x++)
+	//for (t.x = roundedRect.origin.tile.x; t.x < roundedRect.origin.tile.x + tileRegionWidth; t.x++)
 	{
 		for (t.y = (roundedRect.origin.tile.y); t.y <= roundedRect.origin.tile.y + tileRegionHeight; t.y++)
 		{
@@ -217,6 +224,7 @@
 	
 	// Now we translate the loaded region back into screen space for loadedBounds.
 	CGRect newLoadedBounds;
+	
 	newLoadedBounds.origin.x = bounds.origin.x - (rect.origin.offset.x * pixelsPerTile);
 	newLoadedBounds.origin.y = bounds.origin.y - (rect.origin.offset.y * pixelsPerTile);	
 	newLoadedBounds.size.width = tileRegionWidth * pixelsPerTile;

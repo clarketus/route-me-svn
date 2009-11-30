@@ -35,6 +35,7 @@
 @synthesize maxZoom, minZoom;
 @synthesize tileSideLength;
 @synthesize planetBounds;
+@synthesize projectionWrapsHorizontally;
 
 -(id) initFromProjection:(RMProjection*)projection tileSideLength:(NSUInteger)aTileSideLength maxZoom: (NSUInteger) aMaxZoom minZoom: (NSUInteger) aMinZoom
 {
@@ -57,6 +58,8 @@
 	minZoom = aMinZoom;
 	
 	scaleFactor = log2(planetBounds.size.width / tileSideLength);
+	
+	projectionWrapsHorizontally = projection.projectionWrapsHorizontally;
 	
 	return self;
 }
@@ -117,6 +120,10 @@
 
 - (RMProjectedPoint) constrainPointHorizontally: (RMProjectedPoint) aPoint
 {
+	if (!projectionWrapsHorizontally
+		|| planetBounds.size.width == 0.0f || planetBounds.size.height == 0.0f)
+		return aPoint;
+	
 	while (aPoint.easting < planetBounds.origin.easting)
 		aPoint.easting += planetBounds.size.width;
 	while (aPoint.easting > (planetBounds.origin.easting + planetBounds.size.width))

@@ -55,6 +55,7 @@
 - (RMProjectedPoint) constrainPointToBounds: (RMProjectedPoint) aPoint;
 
 + (RMProjection *) googleProjection;
++ (RMProjection*) nonWrappingGoogleProjection;
 + (RMProjection *) EPSGLatLong;
 + (RMProjection *) OSGB;
 

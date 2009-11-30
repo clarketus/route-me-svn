@@ -47,6 +47,8 @@
 	/// So here we'll cache the first term for efficiency.
 	/// I'm using width arbitrarily - I'm not sure what the effect of using the other term is when they're not the same.
 	double scaleFactor;
+	
+	BOOL projectionWrapsHorizontally;
 }
 
 - (id) initFromProjection:(RMProjection*)projection tileSideLength:(NSUInteger)tileSideLength maxZoom: (NSUInteger) aMaxZoom minZoom: (NSUInteger) aMinZoom;
@@ -54,5 +56,7 @@
 - (void) setTileSideLength: (NSUInteger) aTileSideLength;
 - (void) setMinZoom: (NSUInteger) aMinZoom;
 - (void) setMaxZoom: (NSUInteger) aMaxZoom;
+
+@property (readwrite) BOOL projectionWrapsHorizontally;
 
 @end
