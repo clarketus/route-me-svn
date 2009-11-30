@@ -139,17 +139,22 @@
 
 	//RMLog(@"left:%f middle:%f right:%f x:%f width:%f", left, middle, right, pointX, boundsWidth);//LK
 	
-	if(middle <= left && middle <= right){
-		aPixelPoint.x = (aPoint.easting - originX) / aScale;
-	} else if(left <= middle && left <= right){
-		//RMLog(@"warning: projectXYPoint middle..");//LK
+	if (projection.projectionWrapsHorizontally) {
+		if(middle <= left && middle <= right){
+			aPixelPoint.x = (aPoint.easting - originX) / aScale;
+		} else if(left <= middle && left <= right){
+			//RMLog(@"warning: projectXYPoint middle..");//LK
+			aPixelPoint.x = (aPoint.easting - (originX/*-boundsWidth*/)) / aScale;
+		} else{ //right
+			aPixelPoint.x = (aPoint.easting - (originX+boundsWidth)) / aScale;
+		}
+		
+		// using just this one means the points stay in the same place!
+	} else {
 		aPixelPoint.x = (aPoint.easting - (originX/*-boundsWidth*/)) / aScale;
-	} else{ //right
-		aPixelPoint.x = (aPoint.easting - (originX+boundsWidth)) / aScale;
 	}
 	
-	// using just this one means the points stay in the same place!
-//	aPixelPoint.x = (aPoint.easting - (originX/*-boundsWidth*/)) / aScale;
+
 	
 	aPixelPoint.y = screenBounds.size.height - (aPoint.northing - origin.northing) / aScale;
 	return aPixelPoint;
