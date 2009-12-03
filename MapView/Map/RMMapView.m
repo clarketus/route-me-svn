@@ -376,6 +376,20 @@
 			return;
 		}
 	}
+	
+	// make the marker labels forward touches onto the marker
+	if ([[furthestLayerDown class]isSubclassOfClass: [CALayer class]]) {
+		// pretty much everything is going to get here.
+		// next check is if the layers super is a marker
+		if ([[[furthestLayerDown superlayer] class]isSubclassOfClass: [RMMarker class]]) {
+			if ([[furthestLayerDown superlayer] respondsToSelector:@selector(touchesEnded:withEvent:)]) {
+				[[furthestLayerDown superlayer] performSelector:@selector(touchesEnded:withEvent:) withObject:touches withObject:event];
+				return;
+			}
+		}
+
+	}
+	
 	NSInteger lastTouches = lastGesture.numTouches;
 	
 	// Calculate the gesture.
