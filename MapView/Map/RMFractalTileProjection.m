@@ -37,7 +37,7 @@
 @synthesize planetBounds;
 @synthesize projectionWrapsHorizontally;
 
--(id) initFromProjection:(RMProjection*)projection tileSideLength:(NSUInteger)aTileSideLength maxZoom: (NSUInteger) aMaxZoom
+-(id) initFromProjection:(RMProjection*)projection tileSideLength:(NSUInteger)aTileSideLength maxZoom:(NSUInteger)aMaxZoom minZoom:(NSUInteger)aMinZoom
 {
 	if (![super init])
 		return nil;
@@ -55,6 +55,7 @@
 	
 	tileSideLength = aTileSideLength;
 	maxZoom = aMaxZoom;
+	minZoom = aMinZoom;
 	
 	scaleFactor = log2(planetBounds.size.width / tileSideLength);
 	
@@ -69,8 +70,8 @@
 
 	if (normalised_zoom > maxZoom)
 		normalised_zoom = maxZoom;
-	if (normalised_zoom < 0)
-		normalised_zoom = 0;
+	if (normalised_zoom < minZoom)
+		normalised_zoom = minZoom;
 	
 	return normalised_zoom;
 }

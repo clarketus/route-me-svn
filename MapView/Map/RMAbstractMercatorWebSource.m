@@ -41,7 +41,7 @@
 		return nil;
 	
 	NSUInteger sideLength = [[self class] tileSideLength];
-	tileProjection = [[RMFractalTileProjection alloc] initFromProjection:[self projection] tileSideLength:sideLength maxZoom:18];
+	tileProjection = [[RMFractalTileProjection alloc] initFromProjection:[self projection] tileSideLength:sideLength maxZoom:18 minZoom:0];
 
         networkOperations = TRUE;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkOperationsNotification:) name:RMSuspendNetworkOperations object:nil];
