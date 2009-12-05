@@ -65,6 +65,11 @@
 	[marker setProjectedLocation:[[contents projection]latLongToPoint:point]];
 	[marker setPosition:[[contents mercatorToScreenProjection] projectXYPoint:[[contents projection] latLongToPoint:point]]];
 	[[contents overlay] addSublayer:marker];
+	[self orderMarkers];
+}
+
+- (void)orderMarkers {
+	[contents overlay].sublayers = [[contents overlay].sublayers sortedArrayUsingSelector:@selector(comparePosition:)];
 }
 
 /// \bug see http://code.google.com/p/route-me/issues/detail?id=75

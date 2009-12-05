@@ -85,7 +85,7 @@
 
 - (void) replaceUIImage:(UIImage*)image;
 - (void) replaceUIImage:(UIImage*)image anchorPoint:(CGPoint)anchorPoint;
-
+- (NSComparisonResult)comparePosition:(RMMarker *)marker;
 
 - (void) dealloc;
 
