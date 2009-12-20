@@ -32,16 +32,35 @@
 
 -(id)initWithTile: (RMTile) _tile FromFile: (NSString*) file
 {
-	if (![super initWithTile:_tile])
+	if (![super initWithTile:_tile]) {
 		return nil;
-
-	UIImage *image = [[UIImage alloc] initWithContentsOfFile:file];
-
-        [self updateImageUsingImage:image];
-
-        [image release];
-
+	}
+	
+	filePath = [file retain];
+	
+	// adding in this timer speeds up the maps as the map view is not waiting for the tiles to render before appearing
+	[NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(startLoading:) userInfo:nil repeats:NO];
+		
 	return self;
+}
+
+- (void)startLoading:(NSTimer *)timer {
+	[self performSelectorInBackground:@selector(loadImage) withObject:nil];
+}
+
+- (void)loadImage {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+		UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+		[self performSelectorOnMainThread:@selector(updateImageUsingImage:) withObject:image waitUntilDone:true];
+
+	[pool release];
+	
+}
+
+- (void)dealloc {
+	[filePath release];
+	[super dealloc];
 }
 
 @end

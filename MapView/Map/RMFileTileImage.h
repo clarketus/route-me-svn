@@ -30,7 +30,7 @@
 
 /// RMTileImage subclass: a tile image loaded from a local file.
 @interface RMFileTileImage : RMTileImage {
-
+	NSString *filePath;
 }
 
 -(id)initWithTile: (RMTile) _tile FromFile: (NSString*) filename;
