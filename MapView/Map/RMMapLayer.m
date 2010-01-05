@@ -67,4 +67,9 @@
 	self.bounds = RMScaleCGRectAboutPoint(self.bounds, zoomFactor, self.anchorPoint);
 }
 
+- (NSComparisonResult)comparePosition:(RMMapLayer *)layer {
+	// sends layer to the bottom
+	return NSOrderedAscending;
+}
+
 @end

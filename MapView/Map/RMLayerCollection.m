@@ -51,6 +51,9 @@
 	[super dealloc];
 }
 
+- (void)orderLayers {
+	self.sublayers = [self.sublayers sortedArrayUsingSelector:@selector(comparePosition:)];
+}
 
 - (void)correctScreenPosition: (CALayer *)layer
 {

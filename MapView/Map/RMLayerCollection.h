@@ -66,6 +66,8 @@
 - (void) correctPositionOfAllSublayers;
 - (BOOL) hasSubLayer:(CALayer *)layer;
 - (void) setRotationOfAllSublayers:(float) angle;
+- (void)orderLayers;
+
 //-(void) drawRect: (CGRect)rect;
 //-(CALayer*) layer;
 
