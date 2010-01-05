@@ -64,6 +64,7 @@
 /// \deprecated name will change after 0.5
 - (void) correctPositionOfAllSublayers;
 - (BOOL) hasSubLayer:(CALayer *)layer;
+- (void)orderLayers;
 
 //-(void) drawRect: (CGRect)rect;
 //-(CALayer*) layer;

@@ -58,7 +58,6 @@
 - (void) moveMarker:(RMMarker *)marker AtLatLon:(RMLatLong)point;
 - (void) moveMarker:(RMMarker *)marker AtXY:(CGPoint)point;
 - (void)setRotation:(float)angle;
-- (void)orderMarkers;
 
 
 @end

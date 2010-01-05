@@ -209,7 +209,9 @@
 	}
 }
 
-- (NSComparisonResult)comparePosition:(RMMarker *)marker {
+- (NSComparisonResult)comparePosition:(RMMapLayer *)layer {
+	
+	RMMarker *marker = (RMMarker *)layer;
 	
 	int my_pos    = self.projectedLocation.northing;
 	int their_pos = marker.projectedLocation.northing;
