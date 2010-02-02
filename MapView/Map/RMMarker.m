@@ -211,27 +211,4 @@
 	}
 }
 
-- (NSComparisonResult)comparePosition:(RMMapLayer *)layer {
-	
-	RMMarker *marker = (RMMarker *)layer;
-	
-	int my_pos    = self.projectedLocation.northing;
-	int their_pos = marker.projectedLocation.northing;
-	
-	if (my_pos > their_pos) {
-		
-		return NSOrderedAscending;
-		
-	} else if (my_pos < their_pos) {
-		
-		return NSOrderedDescending;
-		
-	} else {
-		
-		return NSOrderedSame;
-		
-	}
-	
-}
-
 @end

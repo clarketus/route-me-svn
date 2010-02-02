@@ -99,5 +99,4 @@
 /// There is no requirement that a path be closed.
 - (void) closePath;
 
-
 @end
