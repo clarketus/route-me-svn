@@ -334,7 +334,7 @@
     
     int dataSize = sqlite3_column_bytes(statement.statement, columnIdx);
     
-    NSData *data = [NSData dataWithBytesNoCopy:(void *)sqlite3_column_blob(statement.statement, columnIdx) length:dataSize freeWhenDone:NO];
+    NSData *data = [[NSData alloc] initWithBytesNoCopy:(void *)sqlite3_column_blob(statement.statement, columnIdx) length:dataSize freeWhenDone:NO];
     
     return data;
 }
