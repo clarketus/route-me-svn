@@ -168,7 +168,7 @@
 	if (( normalizedProjectedScreenBounds.origin.easting + normalizedProjectedScreenBounds.size.width ) > planetBounds.size.width ) {
 		rightMostViewableEasting = projectedScreenBounds.size.width - ( planetBounds.size.width - normalizedProjectedScreenBounds.origin.easting );
 		// Check if Right of divider but on screen still
-		if ( normalizedProjectedPoint.easting <= rightMostViewableEasting ) {
+		if ( projection.projectionWrapsHorizontally && normalizedProjectedPoint.easting <= rightMostViewableEasting ) {
 			aPixelPoint.x = ( planetBounds.size.width + normalizedProjectedPoint.easting - normalizedProjectedScreenBounds.origin.easting ) / aScale;
 		} else {
 			// everywhere else is left of divider
