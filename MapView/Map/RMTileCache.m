@@ -45,14 +45,18 @@
 
 @implementation RMTileCache
 
--(id)initWithTileSource: (id<RMTileSource>) tileSource
+-(id)initWithTileSource:(id<RMTileSource>)tileSource withCacheConfig:(NSString *)configName
 {
 	if (![super init])
 		return nil;
 	
 	caches = [[NSMutableArray alloc] init];
-
-	id cacheCfg = [[RMConfiguration configuration] cacheConfiguration];
+	
+	if (configName == nil) {
+		configName = @"routeme";
+	}
+	
+	id cacheCfg = [[RMConfiguration alloc] initWithPath: [[NSBundle mainBundle] pathForResource:configName ofType:@"plist"]];
 	
 	if (cacheCfg==nil)
 	{
@@ -64,7 +68,7 @@
 		];
 	}
 
-	for (id cfg in cacheCfg) 
+	for (id cfg in [cacheCfg cacheConfiguration]) 
 	{
 		id<RMTileCache> newCache = nil;
 				

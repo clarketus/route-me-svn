@@ -116,6 +116,8 @@ enum {
 	float maxZoom;
 
 	id<RMTilesUpdateDelegate> tilesUpdateDelegate;
+	
+	NSString *cacheName;
 }
 
 @property (readwrite) CLLocationCoordinate2D mapCenter;
@@ -150,6 +152,8 @@ enum {
 /// The denominator in a cartographic scale like 1/24000, 1/50000, 1/2000000.
 @property (readonly)double scaleDenominator;
 
+@property (retain, readwrite) NSString *cacheName;
+
 - (id)initWithView: (UIView*) view;
 - (id)initWithView: (UIView*) view
 		tilesource:(id<RMTileSource>)newTilesource;
@@ -160,7 +164,8 @@ enum {
 		 zoomLevel:(float)initialZoomLevel
 	  maxZoomLevel:(float)maxZoomLevel
 	  minZoomLevel:(float)minZoomLevel
-   backgroundImage:(UIImage *)backgroundImage;
+   backgroundImage:(UIImage *)backgroundImage
+		 cacheName:(NSString *)_cacheName;
 
 /// \deprecated subject to removal at any moment after 0.5 is released
 - (id) initForView: (UIView*) view;

@@ -27,25 +27,7 @@
 
 #import "RMConfiguration.h"
 
-static RMConfiguration* RMConfigurationSharedInstance = nil;
-
 @implementation RMConfiguration
-
-+ (RMConfiguration*) configuration
-{
-	
-	@synchronized (RMConfigurationSharedInstance) {
-		if (RMConfigurationSharedInstance != nil) return RMConfigurationSharedInstance;
-	
-		/// \bug magic string literals
-		RMConfigurationSharedInstance = [[RMConfiguration alloc] 
-										 initWithPath: [[NSBundle mainBundle] pathForResource:@"routeme" ofType:@"plist"]];
-
-		return RMConfigurationSharedInstance;
-	}
-	return nil;
-}
-
 
 - (RMConfiguration*) initWithPath: (NSString*) path
 {

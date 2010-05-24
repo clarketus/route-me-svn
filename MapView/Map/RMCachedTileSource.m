@@ -30,7 +30,7 @@
 
 @implementation RMCachedTileSource
 
-- (id) initWithSource: (id<RMTileSource>) _source
+- (id) initWithSource: (id<RMTileSource>) _source withCacheConfig:(NSString *)configName
 {
 	if ([_source isKindOfClass:[RMCachedTileSource class]])
 	{
@@ -43,7 +43,7 @@
 	
 	tileSource = [_source retain];
 	
-	cache = [[RMTileCache alloc] initWithTileSource:tileSource];
+	cache = [[RMTileCache alloc] initWithTileSource:tileSource withCacheConfig:(NSString *)configName];
 	
 	return self;
 }
@@ -55,11 +55,11 @@
 	[super dealloc];
 }
 
-+ (RMCachedTileSource*) cachedTileSourceWithSource: (id<RMTileSource>) source
++ (RMCachedTileSource*) cachedTileSourceWithSource:(id<RMTileSource>)source withCacheConfig:(NSString *)configName
 {
 	// Doing this fixes a strange build warning...
 	id theSource = source;
-	return [[[RMCachedTileSource alloc] initWithSource:theSource] autorelease];
+	return [[[RMCachedTileSource alloc] initWithSource:theSource withCacheConfig:(NSString *)configName] autorelease];
 }
 
 -(RMTileImage *) tileImage: (RMTile) tile

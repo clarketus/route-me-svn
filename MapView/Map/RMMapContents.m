@@ -64,6 +64,7 @@
 @synthesize minZoom;
 @synthesize maxZoom;
 @synthesize markerManager;
+@synthesize cacheName;
 
 #pragma mark --- begin constants ----
 #define kZoomAnimationStepTime 0.03f
@@ -87,7 +88,8 @@
 	  			    zoomLevel:kDefaultInitialZoomLevel
 				 maxZoomLevel:kDefaultMaximumZoomLevel
 				 minZoomLevel:kDefaultMinimumZoomLevel
-			  backgroundImage:nil];
+			  backgroundImage:nil
+					cacheName:nil];
 }
 
 - (id)initWithView: (UIView*) view
@@ -104,7 +106,8 @@
 					zoomLevel:kDefaultInitialZoomLevel
 				 maxZoomLevel:kDefaultMaximumZoomLevel
 				 minZoomLevel:kDefaultMinimumZoomLevel
-			  backgroundImage:nil];
+			  backgroundImage:nil
+					cacheName:nil];
 }
 
 - (id)initWithView:(UIView*)newView
@@ -114,6 +117,7 @@
 	  maxZoomLevel:(float)maxZoomLevel
 	  minZoomLevel:(float)minZoomLevel
    backgroundImage:(UIImage *)backgroundImage
+		 cacheName:(NSString *)_cacheName
 {
 	LogMethod();
 	if (![super init])
@@ -121,7 +125,8 @@
 
 	NSAssert1([newView isKindOfClass:[RMMapView class]], @"view %@ must be a subclass of RMMapView", newView);
 	[(RMMapView *)newView setContents:self];
-
+	
+	cacheName = _cacheName;
 	tileSource = nil;
 	projection = nil;
 	mercatorToTileProjection = nil;
@@ -600,7 +605,7 @@
 	if (tileSource == newTileSource)
 		return;
 	
-	RMCachedTileSource *newCachedTileSource = [RMCachedTileSource cachedTileSourceWithSource:newTileSource];
+	RMCachedTileSource *newCachedTileSource = [RMCachedTileSource cachedTileSourceWithSource:newTileSource withCacheConfig:cacheName];
 	
 	[tileSource release];
 	tileSource = [newCachedTileSource retain];

@@ -38,11 +38,11 @@
 	RMTileCache *cache;
 }
 
-- (id) initWithSource: (id<RMTileSource>) source;
+- (id) initWithSource: (id<RMTileSource>) _source withCacheConfig:(NSString *)configName;
 - (void) didReceiveMemoryWarning;
 
 /// Bleah ugly name.
-+ (RMCachedTileSource*) cachedTileSourceWithSource: (id<RMTileSource>) source;
++ (RMCachedTileSource*) cachedTileSourceWithSource:(id<RMTileSource>)source withCacheConfig:(NSString *)configName;
 
 - (id<RMTileSource>) underlyingTileSource;
 

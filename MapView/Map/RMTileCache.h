@@ -57,7 +57,7 @@ typedef enum {
 	NSMutableArray *caches;
 }
 
--(id)initWithTileSource: (id<RMTileSource>) tileSource;
+-(id)initWithTileSource:(id<RMTileSource>)tileSource withCacheConfig:(NSString *)configName;
 
 +(NSNumber*) tileHash: (RMTile)tile;
 

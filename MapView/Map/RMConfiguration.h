@@ -34,8 +34,6 @@
 	
 }
 
-+ (RMConfiguration*) configuration;
-
 - (RMConfiguration*) initWithPath: (NSString*) path;
 - (void) dealloc;
 
