@@ -58,17 +58,20 @@
 	
 	id cacheCfg = [[RMConfiguration alloc] initWithPath: [[NSBundle mainBundle] pathForResource:configName ofType:@"plist"]];
 	
-	if (cacheCfg==nil)
-	{
-		cacheCfg = [NSArray arrayWithObjects:
+	NSDictionary *config;
+	if (cacheCfg == nil) {
+		config = [NSArray arrayWithObjects:
 					/// \bug magic string literals
 			[NSDictionary dictionaryWithObject: @"memory-cache" forKey: @"type"],
 			[NSDictionary dictionaryWithObject: @"db-cache"     forKey: @"type"],
 			nil
 		];
+	} else {
+		config = [cacheCfg cacheConfiguration];
+		[cacheCfg release];
 	}
-
-	for (id cfg in [cacheCfg cacheConfiguration]) 
+	
+	for (id cfg in config) 
 	{
 		id<RMTileCache> newCache = nil;
 				
