@@ -32,6 +32,7 @@
 #	import <Cocoa/Cocoa.h>
 #endif
 #import "RMTile.h"
+#import "RMCountedSet.h"
 
 @class RMTileImage;
 @protocol RMTileSource;
@@ -48,8 +49,8 @@
 @interface RMTileImageSet : NSObject {
 	IBOutlet id delegate;
 	id<RMTileSource> tileSource;
-
-	NSCountedSet *images;
+	
+	RMCountedSet *images;
 }
 
 -(id) initWithDelegate: (id) _delegate;
@@ -60,7 +61,7 @@
 -(CGRect) addTiles: (RMTileRect)rect ToDisplayIn:(CGRect)bounds;
 
 -(RMTileImage*) imageWithTile: (RMTile) tile;
-	
+
 -(void) removeTile: (RMTile) tile;
 -(void) removeTiles: (RMTileRect)rect;
 
