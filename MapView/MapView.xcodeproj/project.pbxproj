@@ -826,7 +826,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MapView" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectReferences = (
@@ -1037,6 +1041,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = DoxygenDocumentation;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -1048,6 +1053,7 @@
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = DoxygenDocumentation;
+				SDKROOT = "";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1081,6 +1087,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "RM Unit Tests";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1113,6 +1120,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "RM Unit Tests";
+				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1130,6 +1138,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = MapView;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -1146,6 +1155,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = MapView;
+				SDKROOT = "";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1165,7 +1175,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				PRODUCT_NAME = MapView;
-				VALID_ARCHS = armv6;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1184,7 +1194,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				PRODUCT_NAME = MapView;
-				VALID_ARCHS = armv6;
+				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1207,7 +1217,6 @@
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos4.0;
-				VALID_ARCHS = armv6;
 			};
 			name = Debug;
 		};
@@ -1223,7 +1232,6 @@
 				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.0;
-				VALID_ARCHS = armv6;
 			};
 			name = Release;
 		};
