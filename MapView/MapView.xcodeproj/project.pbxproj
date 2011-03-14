@@ -1041,7 +1041,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = DoxygenDocumentation;
-				SDKROOT = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1053,7 +1054,8 @@
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = DoxygenDocumentation;
-				SDKROOT = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1088,6 +1090,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "RM Unit Tests";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1121,6 +1124,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "RM Unit Tests";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1138,7 +1142,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = MapView;
-				SDKROOT = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1155,7 +1160,8 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = MapView;
-				SDKROOT = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1176,6 +1182,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = MapView;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1195,6 +1202,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = MapView;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
